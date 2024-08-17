@@ -29,4 +29,6 @@ class Cuti extends Model
     {
         return $this->belongsTo(PengajuanCuti::class, 'id_pengajuan');
     }
+   
+
 }

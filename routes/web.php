@@ -8,6 +8,10 @@ use App\Http\Controllers\Admin\KaryawanController;
 use App\Http\Controllers\Admin\AbsensiController;
 use App\Http\Controllers\Admin\CutiController;
 use App\Http\Controllers\Admin\GajiController;
+use App\Http\Controllers\User\AbsenController;
+use App\Http\Controllers\User\CutiiController;
+
+
 
 
 Route::get('/', function () {
@@ -39,6 +43,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/karyawan/gaji/{id}/edit', [GajiController::class, 'edit'])->name('admin.gaji.edit');
     Route::put('/admin/karyawan/gaji/{id}', [GajiController::class, 'update'])->name('admin.gaji.update');
     Route::delete('/admin/karyawan/gaji/{id}', [GajiController::class, 'destroy'])->name('admin.gaji.destroy');
+    
+    Route::get('/absen', [AbsenController::class, 'index'])->name('absen');
+    Route::post('/absen', [AbsenController::class, 'absen'])
+    ->middleware(['auth', 'otheruser'])->name('absen');
+    Route::post('/absen/updateabsen', [AbsenController::class, 'updateAbsen'])
+    ->middleware(['auth', 'otheruser'])->name('updateAbsen');
+
+    Route::get('/cuti', [App\Http\Controllers\User\CutiiController::class, 'index'])->name('user.cuti');
+
+    Route::get('/formcuti', [App\Http\Controllers\User\CutiiController::class, 'create'])->name('user.formcuti');
+    Route::post('/formcuti/tambah', [App\Http\Controllers\User\CutiiController::class,'store'])->name('formcuti.store');
+    
+    
+ 
+
 });
 
 

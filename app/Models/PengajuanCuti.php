@@ -17,7 +17,6 @@ class PengajuanCuti extends Model
         'tanggal',
         'waktu_mulai',
         'waktu_selesai',
-        'status',
     ];
 
     public function karyawan()
@@ -28,5 +27,9 @@ class PengajuanCuti extends Model
     public function jenisCuti()
     {
         return $this->belongsTo(JenisCuti::class, 'id_jenis_cuti');
+    }
+    public function Cuti()
+    {
+        return $this->hasOne(Cuti::class, 'id_pengajuan', 'id_pengajuan');
     }
 }

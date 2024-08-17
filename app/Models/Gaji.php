@@ -21,4 +21,5 @@ class Gaji extends Model
     {
         return $this->belongsTo(Karyawan::class, 'id_karyawan');
     }
+    
 }

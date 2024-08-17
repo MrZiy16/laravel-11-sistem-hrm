@@ -40,7 +40,7 @@
                 <tbody>
                     @foreach ($absensi as $absensi)
                         <tr>
-                            <td>{{ $absensi->id_kehadiran }}</td>
+                            <td>{{ $loop->iteration }}</td> 
                             <td>{{ $absensi->karyawan->name }}</td> <!-- Assuming a relationship with Karyawan -->
                             <td>{{ $absensi->tanggal }}</td>
                             <td>{{ $absensi->waktu_masuk }}</td>
